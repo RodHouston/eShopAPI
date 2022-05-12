@@ -13,6 +13,10 @@ const stripeRoute = require('../routes/stripe.js')
 const cors = require("cors")
 const app = express();
 const router = express.Router();
+
+const Product = require("../models/Product");
+
+
 dotenv.config()
 
 mongoose.connect( process.env.MONGO_URL )
