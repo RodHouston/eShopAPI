@@ -23,10 +23,10 @@ router.post('/testpost',(req,res) => {
         hello: "hit the POST!"
       });
 })
+c
 
 
-
-// app.use('/.netlify/functions/api/products', productRoute)
+app.use('/.netlify/functions/api/products', productRoute)
 app.use(`/.netlify/functions/api`, router);
 
 module.exports = app;
