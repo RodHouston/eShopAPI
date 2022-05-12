@@ -27,7 +27,8 @@ router.post('/register', async (req , res) => {
 router.post('/login', async (req, res) => {
     try {
         const user = await  User.findOne({username: req.body.username})
-
+        // console.log('auth login')
+        // console.log(user);
         // !user &&  res.status(401).json("Wrong User Name");        
         if (!user){
             res.status(401).json("Wrong User Name")
@@ -46,7 +47,7 @@ router.post('/login', async (req, res) => {
                 res.status(401).json('wrong pass')
                 return
             }
-        const accessToken = await jwt.sign({
+        const accessToken = jwt.sign({
             id:user._id,            
             isAdmin: user.isAdmin,            
         },
@@ -58,9 +59,9 @@ router.post('/login', async (req, res) => {
         // console.log(accessToken);
         //sending all info besides password
         const { password, ...others} = user._doc;
-
-       res.status(200).json({...others, accessToken})
-
+        
+    res.status(200).json({...others, accessToken})
+   
     } catch (err) {
        return res.status(500).json(err);
     }

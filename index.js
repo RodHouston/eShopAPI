@@ -24,6 +24,19 @@ app.use(express.json())
 app.use(cors()); 
 
 
+app.use('/.netlify/functions/api/users', userRoute)
+
+app.use('/.netlify/functions/api/auth', authRoute)
+
+app.use('/.netlify/functions/api/products', productRoute)
+
+app.use('/.netlify/functions/api/carts', cartRoute)
+
+app.use('/.netlify/functions/api/orders', orderRoute)
+
+app.use('/.netlify/functions/api/checkout', stripeRoute)
+
+
 app.use('/api/users', userRoute)
 
 app.use('/api/auth', authRoute)
@@ -39,6 +52,7 @@ app.use('/api/checkout', stripeRoute)
 
 
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3008, () => {
     console.log('listening on port:' + process.env.PORT);
 })
+ 
