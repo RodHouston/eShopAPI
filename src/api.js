@@ -1,15 +1,14 @@
 const express = require("express");
 const serverless = require("serverless-http");
-const productRoute = require('../routes/product.js')
 
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-const userRoute = require('./routes/user.js')
-const authRoute = require('./routes/auth.js')
-const productRoute = require('./routes/product.js')
-const cartRoute = require('./routes/cart.js')
-const orderRoute = require('./routes/order.js')
-const stripeRoute = require('./routes/stripe.js')
+const userRoute = require('../routes/user.js')
+const authRoute = require('../routes/auth.js')
+const productRoute = require('../routes/product.js')
+const cartRoute = require('../routes/cart.js')
+const orderRoute = require('../routes/order.js')
+const stripeRoute = require('../routes/stripe.js')
 
 const cors = require("cors")
 
