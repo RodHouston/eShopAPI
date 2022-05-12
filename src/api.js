@@ -30,7 +30,7 @@ router.get("/", async (req, res) => {
   const qCategory = req.query.category;
 
   
-      products = Product.find();
+      products = await Product.find();
    
 
     res.status(200).json(products);
