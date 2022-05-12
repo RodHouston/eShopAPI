@@ -1,5 +1,5 @@
 const Cart = require("../models/Cart");
-const Wish = require("../models/Wishist");
+const Wish = require("../models/Wishlist");
 
 const {
   verifyToken,
