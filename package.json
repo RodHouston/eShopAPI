@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-   
     "test": "echo \"Error: no test specified\" && exit 1",
-   
-    "start": "./node_modules/.bin/netlify-lambda serve src",
-"build": "./node_modules/.bin/netlify-lambda build src"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -22,10 +19,11 @@
     "netlify-lambda": "^2.0.15",
     "nodemon": "^2.0.15",
     "serverless-http": "^3.0.1",
+    "snappy": "^7.1.1",
     "stripe": "^8.219.0"
   },
   "repository": {
-    "type": "git",
+    "type": "git", 
     "url": "git+https://github.com/RodHouston/eShopAPI.git"
   },
   "bugs": {
