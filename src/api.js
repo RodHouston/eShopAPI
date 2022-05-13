@@ -33,7 +33,7 @@ router.get("/", async (req, res) => {
   const qNew = req.query.new;
   const qCategory = req.query.category;
 
-  
+  console.log('in here Product');
       products = await Product.find();
    
 
