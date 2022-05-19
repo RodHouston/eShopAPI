@@ -22,6 +22,9 @@ router.post('/register', async (req , res) => {
         res.status(500).json(err);
     }    
 })  
+
+
+
 //Login
 
 router.post('/login', async (req, res) => {
@@ -50,6 +53,7 @@ router.post('/login', async (req, res) => {
         const accessToken = jwt.sign({
             id:user._id,            
             isAdmin: user.isAdmin,            
+            isWholeSale: user.isWholeSale,            
         },
             process.env.JWT_SEC, 
             {expiresIn:'3d'}

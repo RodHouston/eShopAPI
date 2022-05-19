@@ -10,10 +10,11 @@ const router = require("express").Router();
 //CREATE
 
 router.post("/", verifyToken, async (req, res) => {
-  const newOrder = new Order(req.body);
-
+  const newOrder = new Order(req.body.myCart);
+  // newOrder.products = req.body.myCart.products
+  console.log(newOrder); 
   try {
-    const savedOrder = await newOrder.save();
+    const savedOrder = await newOrder.save(); 
     res.status(200).json(savedOrder);
   } catch (err) {
     res.status(500).json(err);
@@ -27,7 +28,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
       req.params.id,
       {
         $set: req.body,
-      },
+      }, 
       { new: true }
     );
     res.status(200).json(updatedOrder);

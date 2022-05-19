@@ -212,6 +212,7 @@ router.put("/:id/:userId/:productId/:location", verifyTokenAndAuthorization, asy
 
 //GET USER CART
 router.get("/find/:location/:userId", verifyTokenAndAuthorization, async (req, res) => {  
+  console.log('getting cart');
   const loc = req.params.location
   try {
     if (loc === 'Cart'){
