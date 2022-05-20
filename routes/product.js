@@ -24,6 +24,8 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
 
 //UPDATE
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
+  console.log('in pro update');
+  console.log(req.body);
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
@@ -64,8 +66,10 @@ router.get("/", async (req, res) => {
   const qCategory = req.query.category;
   const q = req.query.q;
 
-  
-  const keys = ['title','desc', 'categories', 'size','color']
+  console.log('here');
+    console.log(qCategory);
+    console.log(q);
+  const keys = ['title','desc', 'gender', 'categories', 'subCategories', 'size','color']
   try {
     let products;
     
