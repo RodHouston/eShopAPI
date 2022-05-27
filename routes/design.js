@@ -64,26 +64,33 @@ router.get("/find/:id", async (req, res) => {
 router.get("/", async (req, res) => {
   const qNew = req.query.new;
   const qCategory = req.query.category;
-  
-  try {
-    let designs;
+  const q = req.query.q;
 
+  console.log('here');
+    console.log(qCategory);
+    console.log(q);
+  const keys = ['title','desc', 'categories','color']
+  try {
+    let designs;  
     if (qNew) {
-      designs = await Design.find().sort({ createdAt: - 1 }).limit(1);
+      designs = await Design.find().sort({ createdAt: - 1 }).limit(1);      
     } else if (qCategory) {
       designs = await Design.find({
         categories: {
           $in: [qCategory],
         },
       });
-    } else {
-      designs = await Design.find();
-      // console.log('here');
-      // console.log(designs);
+    } else if (q){      
+      pro = await Design.find()     
+      designs = pro.filter((item) => {
+        return keys.some((key) => item[key].toString().toLowerCase().trim().includes(q.toString().toLowerCase().trim()))
+      }) 
+    }else {
+      designs = await Design.find();      
     }
-
-    res.status(200).json(designs);
+    res.status(200).json(designs);    
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });

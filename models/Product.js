@@ -30,7 +30,7 @@ const ProductSchema = new mongoose.Schema(
     
     onSale: {type: Boolean, default:false},
     isWholeSaleItem: {type: Boolean, default:false},
-
+    isPrintItem: {type: Boolean, default:false},
     inStock: {type: Boolean, default:true}, 
     inventory: {type: Number, required: true }    
   },

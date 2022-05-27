@@ -13,18 +13,22 @@ const router = require("express").Router();
 
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
   const newProduct = new Product(req.body);
-
+  console.log('in pro create');
+  console.log(req.body);
   try {
     const savedProduct = await newProduct.save();
+    console.log('herer');
     res.status(200).json(savedProduct);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
+    
   }
 });
 
 //UPDATE
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
-  console.log('in pro update');
+  
   // console.log(req.body);
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
@@ -68,9 +72,9 @@ router.get("/", async (req, res) => {
   const q = req.query.q;
 
   console.log('here');
-    console.log(qCategory);
+    // console.log(qCategory);
     console.log(q);
-  const keys = ['title','desc', 'gender', 'categories', 'subCategories', 'size','color']
+    const keys = ['title','desc', 'gender', 'categories', 'subCategories', 'size','color']
   try {
     let products;
     
@@ -84,11 +88,18 @@ router.get("/", async (req, res) => {
           $in: [qCategory],
         },
       });
-    } else if (q){      
+    } else if (q){ 
+      if(q=== 'boys' || q=== 'man'|| q=== 'men'||q=== 'ladies'|| q=== 'girl'){
+        products = await Product.find({
+          gender: {
+            $in: [q],
+          },
+        });
+      } else{    
       pro = await Product.find()     
       products = pro.filter((item) => {
         return keys.some((key) => item[key].toString().toLowerCase().trim().includes(q.toString().toLowerCase().trim()))
-      }) 
+      }) }
     }else {
       products = await Product.find();      
     }
