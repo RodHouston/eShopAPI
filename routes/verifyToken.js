@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken");
 
 const verifyToken = (req, res, next) => {
-  // console.log(req); 
+  console.log("this is req in verify token");
+  console.log(req.headers); 
 
   const authHeader = req.headers.token;
   const token = authHeader.split(" ")[1];
@@ -10,7 +11,7 @@ const verifyToken = (req, res, next) => {
 
 
   if (token === 'undefined'){
-    return console.log('we getting close')
+    return console.log('token undefined inside verify token')
   }
 
   if (authHeader) {    
@@ -46,7 +47,8 @@ const verifyTokenAndAuthorization = (req, res, next) => {
 };
   
 const verifyTokenAndAdmin = (req, res, next) => {
-  //  console.log(req.body);
+  console.log("in verify token");
+   console.log(req);
   verifyToken(req, res, () => {
     //  console.log(req.user);
     if (req.user.isAdmin) {  

@@ -66,7 +66,7 @@ router.get("/", async (req, res) => {
   const qCategory = req.query.category;
   const q = req.query.q;
 
-  console.log('here');
+  console.log('here in get all designs');
     console.log(qCategory);
     console.log(q);
   const keys = ['title','desc', 'categories','color']

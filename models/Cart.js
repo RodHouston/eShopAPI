@@ -32,6 +32,9 @@ const CartSchema = new mongoose.Schema(
       title: {
       type: String, 
     },
+      isDesign: {
+      type: Boolean, 
+    },
       quantity: {
           type: Number,
           default: 1,

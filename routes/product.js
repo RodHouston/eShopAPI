@@ -10,14 +10,13 @@ const {
 const router = require("express").Router();
 
 //CREATE
-
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
   const newProduct = new Product(req.body);
-  console.log('in pro create');
-  console.log(req.body);
+  console.log('in product create');
+  // console.log(req.body);
   try {
     const savedProduct = await newProduct.save();
-    console.log('herer');
+    console.log('after new product');
     res.status(200).json(savedProduct);
   } catch (err) {
     console.log(err);

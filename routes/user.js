@@ -3,16 +3,38 @@ const User = require("../models/User");
 
 const router = require('express').Router()
 
+
+//CREATE USER 
+router.post("/createUser", async (req, res) => {
+console.log("here to create User");
+const newUser = new User(req.body);
+  console.log('in User create');
+  // console.log(req.body);
+  try {
+    const savedUser = await newUser.save();
+    console.log('after new User');
+    res.status(200).json(savedUser);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+    
+  }
+})
+
 //update
-router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
-    if (req.body.password) {
-      req.body.password = CryptoJS.AES.encrypt(
-        req.body.password, 
-        process.env.PASS_SEC
-      ).toString();
-    }
-    try {
-        
+// verifyTokenAndAuthorization,
+router.put("/:id",  async (req, res) => {
+  console.log("updated req");
+  console.log(req);
+  
+    // if (req.body.password) {
+    //   req.body.password = CryptoJS.AES.encrypt(
+    //     req.body.password, 
+    //     process.env.PASS_SEC
+    //   ).toString();
+    // } 
+    try {         
+      console.log(" inside update User");
         const updatedUser = await User.findByIdAndUpdate(
           req.params.id,
           {
@@ -20,7 +42,8 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
           },
           { new: true }
         );
-        
+        console.log("after Update User");
+        console.log(updatedUser);
         res.status(200).json(updatedUser);
       } catch (err) {
         res.status(500).json('err');

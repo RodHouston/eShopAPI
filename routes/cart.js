@@ -71,6 +71,7 @@ router.put("/:id/:userId/:location", verifyTokenAndAuthorization, async (req, re
         
   } catch (err) { 
     res.status(500).json(err); 
+    console.log(err);
   } 
 }); 
 

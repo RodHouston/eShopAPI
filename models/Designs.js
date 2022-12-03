@@ -29,7 +29,8 @@ const DesignSchema = new mongoose.Schema(
     isWholeSaleItem: {type: Boolean, default:false},
 
     inStock: {type: Boolean, default:true}, 
-    inventory: {type: Number, required: true }    
+    inventory: {type: Number, required: true },  
+    isDesign: {type: Boolean, default:true, required: true }   
   },
   { timestamps: true }
 );
