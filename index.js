@@ -9,6 +9,8 @@ const designRoute = require('./routes/design.js')
 const cartRoute = require('./routes/cart.js')
 const orderRoute = require('./routes/order.js')
 const stripeRoute = require('./routes/stripe.js')
+const productCategoryRoute = require('./routes/productCategories.js')
+const photoGalleryRoute = require('./routes/photoGallery.js')
 
 const cors = require("cors")
 
@@ -44,6 +46,8 @@ app.use('/api/auth', authRoute)
 
 app.use('/api/products', productRoute)
 
+app.use('/api/productCategories', productCategoryRoute)
+
 app.use('/api/designs', designRoute)
 
 app.use('/api/carts', cartRoute)
@@ -52,7 +56,7 @@ app.use('/api/orders', orderRoute)
 
 app.use('/api/checkout', stripeRoute)
 
-
+app.use('/api/photoGallery', photoGalleryRoute)
 
 
 app.listen(process.env.PORT || 3008, () => {
