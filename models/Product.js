@@ -33,7 +33,13 @@ const ProductSchema = new mongoose.Schema(
     isWholeSaleItem: {type: Boolean, default:false},
     isPrintItem: {type: Boolean, default:false},
     inStock: {type: Boolean, default:true}, 
-    inventory: {type: Number, required: true }    
+    inventory: {type: Number, required: true },
+    ratings: [{
+      rating:{ type: Number},
+      customerName:{type:String},
+      ratingComment:{type: String}
+    }],
+
   },
   { timestamps: true }
 );
