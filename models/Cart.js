@@ -7,6 +7,10 @@ const CartSchema = new mongoose.Schema(
       {productId: {
         type: String, 
       },
+      productItem:{
+        type: Object,
+
+      },
       
     color: {
       type: String, 

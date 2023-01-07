@@ -70,9 +70,9 @@ router.get("/", async (req, res) => {
   const qCategory = req.query.category;
   const q = req.query.q;
 
-  console.log('here');
-    // console.log(qCategory);
-    console.log(q);
+  // console.log('here in get All Products api call ');
+  //   console.log(req);
+    // console.log(q);
     const keys = ['title','desc', 'gender', 'categories', 'subCategories', 'size','color']
   try {
     let products;

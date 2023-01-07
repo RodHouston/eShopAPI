@@ -40,17 +40,21 @@ router.post('/login', async (req, res) => {
             return;
         }
         
-        const hashedPassword = CryptoJS.AES.decrypt(
+        const Originalpassword  = CryptoJS.AES.decrypt(
             user.password,
             process.env.PASS_SEC
-            )
-        
-        const Originalpassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+            ).toString(CryptoJS.enc.Utf8)
+        const testPassword = CryptoJS.AES.decrypt(
+            req.body.password ,
+            process.env.PASS_SEC
+            ).toString(CryptoJS.enc.Utf8)
+
+        // const Originalpassword = hashedPassword.toString(CryptoJS.enc.Utf8);
 
         // Originalpassword !== req.body.password && 
         //     res.status(401).json('wrong pass')
         
-            if(Originalpassword!== req.body.password){
+            if(Originalpassword!== testPassword ){
                 console.log('auth login')
                 res.status(401).json('wrong pass')
                 return
@@ -59,7 +63,8 @@ router.post('/login', async (req, res) => {
         const accessToken = jwt.sign({
             id:user._id,            
             isAdmin: user.isAdmin,            
-            isWholeSale: user.isWholeSale,            
+            isWholeSale: user.isWholeSale,   
+                 
         },
             process.env.JWT_SEC, 
             {expiresIn:'3d'}

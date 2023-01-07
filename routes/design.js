@@ -33,7 +33,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
       { new: true }
     );
     res.status(200).json(updatedDesign);
-    console.log('updeated des');
+    // console.log('updeated des');
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
@@ -66,9 +66,9 @@ router.get("/", async (req, res) => {
   const qCategory = req.query.category;
   const q = req.query.q;
 
-  console.log('here in get all designs');
-    console.log(qCategory);
-    console.log(q);
+  // console.log('here in get all designs');
+  //   console.log(qCategory);
+  //   console.log(q);
   const keys = ['title','desc', 'categories','color']
   try {
     let designs;  

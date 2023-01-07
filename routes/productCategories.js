@@ -12,11 +12,11 @@ const router = require("express").Router();
 //CREATE
 router.post("/", async (req, res) => {
   const newCat = new Category(req.body);
-  console.log('in catergory create');
+  // console.log('in catergory create');
   // console.log(req.body);
   try {
     const savedCat = await newCat.save();
-    console.log('after new product');
+    // console.log('after new product');
     res.status(200).json(savedCat);
   } catch (err) {
     console.log(err);

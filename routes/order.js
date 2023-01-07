@@ -10,7 +10,7 @@ const router = require("express").Router();
 
 // Get Paypal Key
 router.get("/PKEY/:userId", verifyTokenAndAuthorization, async (req, res) => {
-  console.log('herein PKEY');
+  // console.log('herein PaypalKEY');
   try {
     const PKEY = process.env.REACT_APP_PAYPAL_KEY;  
     res.status(200).json(PKEY);
